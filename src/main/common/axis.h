@@ -40,3 +40,13 @@ typedef enum {
     ANGLE_INDEX_COUNT
 } angle_index_t;
 
+
+typedef struct rollAndPitchTrims_s {
+    int16_t roll;
+    int16_t pitch;
+} rollAndPitchTrims_t_def;
+
+typedef union rollAndPitchTrims_u {
+    int16_t raw[2];
+    rollAndPitchTrims_t_def values;
+} rollAndPitchTrims_t;

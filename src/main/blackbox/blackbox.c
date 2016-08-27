@@ -52,15 +52,19 @@
 #include "sensors/battery.h"
 
 #include "io/beeper.h"
+#include "io/motor_and_servo.h"
 
 #include "io/gps.h"
 
+
+#include "modules/pid_module.h"
 
 #include "flight/mixer.h"
 #include "flight/servos.h"
 #include "flight/altitudehold.h"
 #include "flight/failsafe.h"
 #include "flight/imu.h"
+#include "flight/pid.h"
 #include "flight/navigation.h"
 
 #include "fc/runtime_config.h"

@@ -25,6 +25,7 @@
 #include "rx/msp.h"
 
 #include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
 #include "fc/fc_serial.h"
 
 #include "io/motor_and_servo.h"
@@ -35,6 +36,9 @@
 #include "sensors/sensors.h"
 #include "sensors/battery.h"
 #include "sensors/acceleration.h"
+#include "sensors/barometer.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/pid.h"
 #include "flight/imu.h"

@@ -45,6 +45,8 @@
 #include "fc/rc_controls.h"
 #include "fc/rate_profile.h"
 
+#include "modules/pid_module.h"
+
 #include "flight/pid.h"
 
 int16_t axisPID[3];
@@ -64,13 +66,13 @@ pt1Filter_t yawFilter;
 
 
 void pidLuxFloat(const pidProfile_t *pidProfile, const controlRateConfig_t *controlRateConfig,
-        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const rxConfig_t *rxConfig);
+        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const uint16_t midrc);
 void pidMultiWiiRewrite(const pidProfile_t *pidProfile, const controlRateConfig_t *controlRateConfig,
-        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const rxConfig_t *rxConfig);
+        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const uint16_t midrc);
 void pidMultiWii23(const pidProfile_t *pidProfile, const controlRateConfig_t *controlRateConfig,
-        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const rxConfig_t *rxConfig);
+        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const uint16_t midrc);
 
-pidControllerFuncPtr pid_controller = pidMultiWiiRewrite;
+modulePidCF_t modulePidCF;
 
 PG_REGISTER_PROFILE_WITH_RESET_TEMPLATE(pidProfile_t, pidProfile, PG_PID_PROFILE, 0);
 
@@ -111,7 +113,7 @@ PG_RESET_TEMPLATE(pidProfile_t, pidProfile,
     .deltaMethod = PID_DELTA_FROM_MEASUREMENT,
 );
 
-void pidResetITerm(void)
+static void pidCFResetITerm(void)
 {
     for (int axis = 0; axis < 3; axis++) {
         lastITerm[axis] = 0;
@@ -119,22 +121,39 @@ void pidResetITerm(void)
     }
 }
 
-void pidSetController(pidControllerType_e type)
+static void pidCFSetController(pidControllerType_e type)
 {
     switch (type) {
         default:
         case PID_CONTROLLER_MWREWRITE:
-            pid_controller = pidMultiWiiRewrite;
+            modulePidCF.instance.pid_controller = pidMultiWiiRewrite;
             break;
 #ifndef SKIP_PID_LUXFLOAT
         case PID_CONTROLLER_LUX_FLOAT:
-            pid_controller = pidLuxFloat;
+            modulePidCF.instance.pid_controller = pidLuxFloat;
             break;
 #endif
 #ifndef SKIP_PID_MW23
         case PID_CONTROLLER_MW23:
-            pid_controller = pidMultiWii23;
+            modulePidCF.instance.pid_controller = pidMultiWii23;
             break;
 #endif
     }
+}
+
+const modulePidVTable_t modulePidCFVTable = {
+    .setController = pidCFSetController,
+    .resetITerm = pidCFResetITerm
+};
+
+
+modulePid_t *moduleInitPidCF(void)
+{
+    modulePidCF_t *module = &modulePidCF;
+
+    module_pidSetInstance((modulePid_t *)module);
+    module->instance.vTable = &modulePidCFVTable;
+    module->instance.pid_controller = pidMultiWiiRewrite;
+
+    return (modulePid_t *)module;
 }

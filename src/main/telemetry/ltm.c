@@ -48,6 +48,7 @@
 #include "drivers/serial.h"
 
 #include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
 #include "fc/fc_serial.h"
 
 #include "sensors/sensors.h"
@@ -57,6 +58,7 @@
 #include "io/serial.h"
 #include "io/gps.h"
 
+#include "modules/pid_module.h"
 #include "flight/mixer.h"
 #include "flight/pid.h"
 #include "flight/imu.h"

@@ -47,9 +47,15 @@
 #include "fc/runtime_config.h"
 #include "fc/fc_serial.h"
 
+#include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
+
+#include "modules/pid_module.h"
+
 #include "io/serial.h"
 #include "io/display.h"
 #include "io/gps.h"
+
 
 #include "flight/gps_conversion.h"
 #include "flight/pid.h"

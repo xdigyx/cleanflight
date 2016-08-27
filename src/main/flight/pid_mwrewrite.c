@@ -46,6 +46,7 @@
 #include "fc/rate_profile.h"
 #include "fc/runtime_config.h"
 
+#include "modules/pid_module.h"
 #include "flight/pid.h"
 #include "config/config_unittest.h"
 #include "flight/imu.h"
@@ -143,13 +144,13 @@ STATIC_UNIT_TESTED int16_t pidMultiWiiRewriteCore(int axis, const pidProfile_t *
 }
 
 void pidMultiWiiRewrite(const pidProfile_t *pidProfile, const controlRateConfig_t *controlRateConfig,
-        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const rxConfig_t *rxConfig)
+        uint16_t max_angle_inclination, const rollAndPitchTrims_t *angleTrim, const uint16_t midrc)
 {
     int8_t horizonLevelStrength = 0;
     if (FLIGHT_MODE(HORIZON_MODE)) {
         // Figure out the most deflected stick position
-        const int32_t stickPosAil = ABS(getRcStickDeflection(ROLL, rxConfig->midrc));
-        const int32_t stickPosEle = ABS(getRcStickDeflection(PITCH, rxConfig->midrc));
+        const int32_t stickPosAil = ABS(getRcStickDeflection(ROLL, midrc));
+        const int32_t stickPosEle = ABS(getRcStickDeflection(PITCH, midrc));
         const int32_t mostDeflectedPos =  MAX(stickPosAil, stickPosEle);
 
         // Progressively turn off the horizon self level strength as the stick is banged over

@@ -42,7 +42,12 @@
 #include "drivers/system.h"
 #include "drivers/serial.h"
 
-#include "flight/pid.h"
+#include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
+
+#include "sensors/battery.h"
+#include "sensors/sensors.h"
+
 #include "flight/failsafe.h"
 
 #include "fc/runtime_config.h"
@@ -51,9 +56,6 @@
 
 #include "io/gps.h"
 #include "rx/rx.h"
-
-#include "sensors/battery.h"
-#include "sensors/sensors.h"
 
 #include "io/ledstrip.h"
 

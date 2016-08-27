@@ -69,6 +69,7 @@
 
 #include "drivers/system.h"
 
+#include "fc/rate_profile.h"
 #include "fc/rc_controls.h"
 #include "fc/fc_serial.h"
 #include "fc/runtime_config.h"
@@ -80,6 +81,7 @@
 #include "sensors/sensors.h"
 #include "sensors/battery.h"
 
+#include "modules/pid_module.h"
 #include "flight/pid.h"
 #include "flight/navigation.h"
 #include "io/gps.h"

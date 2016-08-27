@@ -44,6 +44,7 @@
 #include "fc/runtime_config.h"
 #include "fc/config.h"
 #include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
 #include "fc/fc_serial.h"
 
 #include "sensors/sensors.h"
@@ -56,6 +57,7 @@
 #include "io/gps.h"
 
 //#include "flight/mixer.h"
+#include "modules/pid_module.h"
 #include "flight/pid.h"
 #include "flight/imu.h"
 #include "flight/altitudehold.h"

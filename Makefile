@@ -283,6 +283,7 @@ FC_COMMON_SRC = \
 		   flight/imu.c \
 		   flight/mixer.c \
 		   flight/servos.c \
+		   modules/pid_module.c \
 		   drivers/bus_i2c_soft.c \
 		   drivers/exti.c \
 		   drivers/io.c \

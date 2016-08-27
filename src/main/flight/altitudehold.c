@@ -46,7 +46,10 @@
 #include "io/motor_and_servo.h"
 
 #include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
 #include "fc/runtime_config.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/mixer.h"
 #include "flight/pid.h"

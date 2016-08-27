@@ -35,8 +35,6 @@
 #include "config/feature.h"
 #include "config/profile.h"
 
-#include "flight/pid.h"
-
 #include "blackbox/blackbox.h"
 
 #include "io/beeper.h"
@@ -46,6 +44,9 @@
 #include "fc/rc_curves.h"
 #include "fc/rc_adjustments.h"
 #include "fc/config.h"
+
+#include "modules/pid_module.h"
+#include "flight/pid.h"
 
 PG_REGISTER_PROFILE(adjustmentProfile_t, adjustmentProfile, PG_ADJUSTMENT_PROFILE, 0);
 

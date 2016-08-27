@@ -48,6 +48,10 @@
 #include "sensors/barometer.h"
 #include "sensors/sonar.h"
 
+#include "fc/rate_profile.h"
+
+#include "modules/pid_module.h"
+
 #include "flight/mixer.h"
 #include "flight/pid.h"
 #include "flight/imu.h"

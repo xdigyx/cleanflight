@@ -48,6 +48,11 @@
 #include "sensors/boardalignment.h"
 #include "sensors/acceleration.h"
 
+#include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
+
+#include "modules/pid_module.h"
+
 #include "flight/pid.h"
 #include "flight/navigation.h"
 #include "flight/gps_conversion.h"
@@ -58,8 +63,6 @@
 #include "io/beeper.h"
 #include "io/serial.h"
 #include "io/gps.h"
-
-#include "fc/rc_controls.h"
 
 #include "rx/rx.h"
 

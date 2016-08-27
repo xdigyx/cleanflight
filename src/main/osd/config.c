@@ -54,6 +54,8 @@
 
 #include "telemetry/telemetry.h"
 
+#include "modules/pid_module.h"
+
 #include "flight/mixer.h"
 #include "flight/servos.h"
 #include "flight/imu.h"

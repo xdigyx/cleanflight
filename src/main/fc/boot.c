@@ -68,6 +68,7 @@
 #include "rx/spektrum.h"
 
 #include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
 #include "fc/fc_serial.h"
 
 #include "io/serial.h"
@@ -96,6 +97,8 @@
 
 #include "telemetry/telemetry.h"
 #include "blackbox/blackbox.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/pid.h"
 #include "flight/imu.h"
@@ -244,6 +247,10 @@ void init(void)
     drv_pwm_config_t pwm_params;
 
     printfSupportInit();
+
+    modulePidCF_t *modulePid;
+
+    modulePid = (modulePidCF_t *)moduleInitPidCF();
 
     initEEPROM();
 

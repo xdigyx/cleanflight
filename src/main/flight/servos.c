@@ -54,9 +54,12 @@
 #include "fc/runtime_config.h"
 #include "fc/config.h"
 #include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
 
 #include "sensors/sensors.h"
 #include "sensors/acceleration.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/mixer.h"
 #include "flight/servos.h"

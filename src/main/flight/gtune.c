@@ -43,13 +43,18 @@
 #include "sensors/gyro.h"
 #include "sensors/acceleration.h"
 
+#include "fc/rc_controls.h"
+#include "fc/rate_profile.h"
+
+#include "modules/pid_module.h"
+
 #include "flight/pid.h"
 #include "flight/imu.h"
+
 
 #include "blackbox/blackbox.h"
 
 #include "fc/runtime_config.h"
-#include "fc/rc_controls.h"
 #include "fc/config.h"
 
 #include "gtune.h"

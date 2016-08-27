@@ -57,6 +57,7 @@
 #include "sensors/gyro.h"
 #include "sensors/sonar.h"
 
+#include "modules/pid_module.h"
 #include "flight/pid.h"
 #include "flight/imu.h"
 #include "flight/failsafe.h"

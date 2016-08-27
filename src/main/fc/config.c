@@ -54,6 +54,7 @@
 
 #include "telemetry/telemetry.h"
 
+#include "modules/pid_module.h"
 #include "flight/mixer.h"
 #include "flight/servos.h"
 #include "flight/imu.h"
@@ -61,6 +62,7 @@
 #include "flight/pid.h"
 #include "flight/navigation.h"
 
+#include "modules/pid_module.h"
 
 // FIXME remove the includes below when target specific configuration is moved out of this file
 #include "sensors/battery.h"

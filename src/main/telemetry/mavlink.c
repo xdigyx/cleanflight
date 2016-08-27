@@ -47,6 +47,7 @@
 
 #include "fc/rc_controls.h"
 #include "fc/fc_serial.h"
+#include "fc/rate_profile.h"
 #include "fc/config.h"
 #include "fc/runtime_config.h"
 
@@ -63,6 +64,8 @@
 #include "sensors/battery.h"
 
 #include "rx/rx.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/mixer.h"
 #include "flight/pid.h"

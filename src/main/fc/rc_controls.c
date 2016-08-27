@@ -40,6 +40,7 @@
 
 #include "fc/rc_controls.h"
 #include "fc/rc_curves.h"
+#include "fc/rate_profile.h"
 #include "fc/config.h"
 #include "fc/runtime_config.h"
 
@@ -54,6 +55,8 @@
 #include "io/motor_and_servo.h"
 #include "io/display.h"
 
+
+#include "modules/pid_module.h"
 
 #include "flight/pid.h"
 #include "flight/navigation.h"

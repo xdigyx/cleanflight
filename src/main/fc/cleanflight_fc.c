@@ -57,6 +57,7 @@
 #include "sensors/acceleration.h"
 #include "sensors/gyro.h"
 #include "sensors/battery.h"
+#include "sensors/barometer.h"
 
 #include "io/beeper.h"
 #include "io/display.h"
@@ -76,6 +77,8 @@
 
 #include "telemetry/telemetry.h"
 #include "blackbox/blackbox.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/mixer.h"
 #include "flight/servos.h"
@@ -123,8 +126,6 @@ extern uint8_t dynP8[3], dynI8[3], dynD8[3];
 static bool isRXDataNew;
 static pt1Filter_t filteredCycleTimeState;
 uint16_t filteredCycleTime;
-
-extern pidControllerFuncPtr pid_controller;
 
 void applyAndSaveAccelerometerTrimsDelta(rollAndPitchTrims_t *rollAndPitchTrimsDelta)
 {
@@ -730,12 +731,12 @@ void taskMainPidLoop(void)
 #endif
 
     // PID - note this is function pointer set by setPIDController()
-    pid_controller(
+    pidController(
         pidProfile(),
         currentControlRateProfile,
         imuConfig()->max_angle_inclination,
         &accelerometerConfig()->accelerometerTrims,
-        rxConfig()
+        rxConfig()->midrc
     );
 
     mixTable();

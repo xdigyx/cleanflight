@@ -84,6 +84,8 @@
 #include "sensors/compass.h"
 #include "sensors/gyro.h"
 
+#include "modules/pid_module.h"
+
 #include "flight/mixer.h"
 #include "flight/servos.h"
 #include "flight/pid.h"
@@ -91,6 +93,7 @@
 #include "flight/failsafe.h"
 #include "flight/navigation.h"
 #include "flight/altitudehold.h"
+
 
 #include "blackbox/blackbox.h"
 

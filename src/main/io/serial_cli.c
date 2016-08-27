@@ -66,6 +66,7 @@
 #include "io/ledstrip.h"
 #include "io/flashfs.h"
 #include "io/beeper.h"
+#include "io/motor_and_servo.h"
 #include "io/asyncfatfs/asyncfatfs.h"
 
 #include "rx/rx.h"
@@ -80,6 +81,8 @@
 #include "sensors/barometer.h"
 
 #include "blackbox/blackbox.h"
+
+#include "modules/pid_module.h"
 
 #include "flight/pid.h"
 #include "flight/gtune.h"
