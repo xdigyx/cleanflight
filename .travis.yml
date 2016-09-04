@@ -58,8 +58,3 @@ script: ./.travis.sh
 cache:
   - apt
   - ccache
-
-notifications:
-  irc: "chat.freenode.net#cleanflight"
-  use_notice: true
-  skip_join: true
